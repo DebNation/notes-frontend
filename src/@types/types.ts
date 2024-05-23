@@ -1,16 +1,16 @@
-export interface loginResponseType  {
+export interface loginResponseType {
   success: boolean;
   data: {
     id: number;
     username: string;
-    email: string;
+    email: null | string;
     accessToken: string;
     createdAt: string;
     updatedAt: string;
   };
-};
+}
 
-export interface getMeResponseType  {
+export interface getMeResponseType {
   success: boolean;
   data: {
     id: number;
@@ -19,4 +19,4 @@ export interface getMeResponseType  {
     createdAt: string;
     updatedAt: string;
   };
-};
+}

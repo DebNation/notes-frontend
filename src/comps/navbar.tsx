@@ -4,6 +4,7 @@ import { MoonIcon, SunIcon, Bars2Icon } from '@heroicons/react/16/solid'
 import UserContext from '../contexts/userContext'
 
 const Navbar = () => {
+
   const themeContext = useContext(ThemeContext)
 
   const userContext = useContext(UserContext)
