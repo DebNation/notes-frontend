@@ -2,8 +2,7 @@ import UserContext from "./userContext";
 import { UserContextProviderType } from "../@types/themeContextTypes";
 import { useEffect, useState } from "react";
 import { getMeFn } from "../api/api";
-import { getMeResponseType } from "../@types/types";
-import { BoltIcon, ArrowPathIcon } from "@heroicons/react/16/solid";
+// import { BoltIcon, ArrowPathIcon } from "@heroicons/react/16/solid";
 
 const UserContextProvider = ({ children }: UserContextProviderType) => {
   const [accessToken, setAccessToken] = useState("");
@@ -30,8 +29,7 @@ const UserContextProvider = ({ children }: UserContextProviderType) => {
         if (token?.length > 1 && token !== null) {
           try {
             // Check the validity of the token
-            const data: getMeResponseType = await getMeFn(token);
-            console.log(data.data.username);
+             await getMeFn(token);
             //TODO use a usecallback to prevent re-render
 
             setAccessToken(token);
@@ -47,14 +45,8 @@ const UserContextProvider = ({ children }: UserContextProviderType) => {
   }, [accessToken]);
 
   return (
-    <UserContext.Provider value={{ accessToken, userLogin }}>
-      {showLoading ? (
-        <div className="h-screen items-center justify-center flex dark:bg-neutral-800 dark:text-white ">
-          <BoltIcon className="h-10 w-10 animate-pulse duration-75 fill-green-700" />
-        </div>
-      ) : (
-        children
-      )}
+    <UserContext.Provider value={{ accessToken, userLogin, showLoading }}>
+      {children}
     </UserContext.Provider>
   );
 };

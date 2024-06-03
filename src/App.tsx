@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import Login from "./comps/login";
 import ThemeContext from "./contexts/themeContext";
+import Index from "./comps/index";
 import Navbar from "./comps/navbar";
 
 function App() {
@@ -11,11 +11,14 @@ function App() {
   } else {
     html?.classList.remove("dark");
   }
+  
+
+  
   return (
-    <div>
-      <Navbar />
-      <Login />
-    </div>
+    <>
+      <Navbar/>
+      <Index />
+    </>
   );
 }
 

@@ -20,3 +20,24 @@ export interface getMeResponseType {
     updatedAt: string;
   };
 }
+
+export interface getAllNotesResponseType {
+  success: boolean;
+  data: {
+    title: string;
+    desc: string;
+    id: number;
+    createdAt: string;
+    updatedAt: string;
+    userId: number;
+  };
+}
+
+export interface NoteType {
+  id: number;
+  title: string;
+  desc: string;
+  createdAt: string;
+  updatedAt: string;
+  userId: number;
+}

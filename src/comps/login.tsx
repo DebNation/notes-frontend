@@ -21,7 +21,7 @@ function Login() {
       userContext?.userLogin(accessToken);
     } catch (err) {
       console.log(err);
-      if (err.response.status === 400) {
+      if (err?.response?.status === 400) {
         console.log("check your credentials again");
       }
     }
@@ -29,28 +29,23 @@ function Login() {
   };
 
   return (
-    <div className="h-screen items-center justify-center flex dark:bg-neutral-800 dark:text-white">
+    <div className="h-screen items-center justify-center flex dark:bg-everforest_bg0 dark:text-white">
       {showProcessing ? (
         <ArrowPathIcon className="animate-spin h-6 w-6" />
       ) : (
         <form
           onSubmit={handleSubmit}
-          className="border-2 p-5 w-3/4  md:w-2/4 lg:w-1/4 shadow-black border-black dark:border-gray-300 "
+          className="border-2 rounded-md p-5 w-3/4  md:w-2/4 lg:w-1/4 shadow-black border-black dark:border-gray-300 "
         >
           <div className=" inline-block text-center p-5 w-full">
             <h1 className="text-3xl mb-1">Login</h1>
             <hr />
-            {userContext?.accessToken ? (
-              <div>Loggedin</div>
-            ) : (
-              <div>NotLoggedin</div>
-            )}
           </div>
 
           <div className=" block ">
             <label className="block">Username</label>
             <input
-              className="p-2 mt-1 w-full border-2 hover:border-black dark:border-0 dark:bg-neutral-600 "
+              className="p-2 mt-1 w-full border-2 hover:border-black dark:border-neutral-600 dark:border-2 dark:bg-neutral-600 "
               placeholder="demouser"
               type="text"
               value={username}
@@ -60,7 +55,7 @@ function Login() {
           <div className="block mt-2">
             <label className="block">Password</label>
             <input
-              className="p-2 mt-1 w-full border-2 hover:border-black dark:border-0 dark:bg-neutral-600 "
+              className="p-2 mt-1 w-full border-2 hover:border-black dark:border-neutral-600 dark:border-2 dark:bg-neutral-600 "
               placeholder="*********"
               type="password"
               value={password}
