@@ -34,15 +34,15 @@ const AddNote = () => {
     <div className="flex justify-center items-center">
       <div className="">
         <button
-          className="px-8 py-3 m-5 bg-green-800 text-sm rounded-md dark:hover:px-10 duration-300 "
+          className="px-8 py-3 m-5 bg-yellow-600 text-sm rounded-md dark:hover:px-10 duration-300 "
           onClick={() => setOpenModal(!openModal)}
         >
           <PlusIcon className="w-6 h-6" />
         </button>
         {openModal ? (
-          <div className="fixed inset-0 bg-opacity-30 backdrop-blur-sm duration-100" id="modal" >
+          <div className="fixed inset-0 bg-opacity-30 backdrop-blur-sm duration-100 animate-pop-up" id="modal" >
             <div className=" text-xl w-full h-screen flex justify-center p-5">
-              <div className="bg-blend-saturation rounded-md bg-everforest_bg_yellow md:w-2/4  h-5/6 sm:5/6 md:h-4/6  w-full  md:3/4 p-5 ">
+              <div className="bg-blend-saturation rounded-md bg-neutral-800 md:w-2/4  h-5/6 sm:5/6 md:h-4/6  w-full  md:3/4 p-5 ">
                 <div className="flex justify-center text-xl pt-5">
                   <h1 className="">Add Note</h1>
                 </div>

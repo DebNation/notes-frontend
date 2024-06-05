@@ -38,7 +38,8 @@ function NoteItem(props: NoteType) {
       if (user?.accessToken && confirmUpdate) {
         const response = await updateNoteFn(user.accessToken, title, desc, id);
         console.log(response);
-        alert("Updated");
+        // alert("Updated");
+        setOpenModal(!openModal)
         return response;
       } else if (user?.accessToken && confirmDelete) {
         const response = await DeleteNoteFn(user.accessToken, id);
@@ -74,11 +75,11 @@ function NoteItem(props: NoteType) {
       {openModal ? (
         <div className="flex justify-center items-center">
           <div
-            className="fixed inset-0 bg-opacity-30 backdrop-blur-md duration-100"
+            className="fixed inset-0 bg-opacity-30 backdrop-blur-md duration-100 animate-pop-up"
             id="modal"
           >
             <div className=" w-full h-screen flex justify-center p-5">
-              <div className="bg-blend-saturation rounded-md bg-neutral-800 md:w-2/4 h-4/6 sm:5/6 md:h-4/6 w-full md:3/4 p-5 ">
+              <div className="bg-blend-saturation rounded-md bg-neutral-800 md:w-2/4  h-5/6 sm:5/6 md:h-4/6  w-full  md:3/4 p-5  ">
                 <div className="flex justify-center text-xl pt-5">
                   <h1 className="">Update Note</h1>
                 </div>

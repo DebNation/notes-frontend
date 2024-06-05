@@ -13,6 +13,16 @@ export default {
         everforest_bg_yellow: "#45443c",
         everforest_bg_red: "#4c3743",
       },
+      keyframes: {
+        bounceOnce: {
+          "0%, 20%, 50%, 80%, 100%": { transform: "translateY(0)" },
+          "40%": { transform: "translateY(-30px)" },
+          "60%": { transform: "translateY(-15px)" },
+        },
+      },
+      animation: {
+        bounceOnce: "bounceOnce 1s ease-out",
+      },
     },
   },
   plugins: [],

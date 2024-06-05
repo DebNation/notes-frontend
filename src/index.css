@@ -30,5 +30,31 @@
   }
 }
 
+/* Custom CSS */
+@keyframes dropOnce {
+  0% { transform: translateY(-100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes bounceUp {
+  0% { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-drop-once {
+  animation: dropOnce 0.2s ease-out;
+}
+.animate-bounce-up-once{
+  animation: bounceUp 0.2s ease-out;
+}
+
+@keyframes popUp {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-pop-up {
+  animation: popUp 0.3s ease-out; /* Duration for quick animation */
+}
+
 
 

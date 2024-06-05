@@ -11,9 +11,7 @@ function App() {
   } else {
     html?.classList.remove("dark");
   }
-  
-
-  
+ 
   return (
     <>
       <Navbar/>

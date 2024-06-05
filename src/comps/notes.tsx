@@ -21,10 +21,20 @@ const Notes = () => {
     queryKey: ["notes", user?.accessToken],
     queryFn: async () => {
       if (user?.accessToken) {
-        const response = await getAllNotes(user?.accessToken);
+        try{
+const response = await getAllNotes(user?.accessToken);
         console.log(isRefetchError);
         console.log(isError);
+        console.log(isPending)
+        console.log(response)
         return response.data;
+
+        }
+        catch(err){
+          console.log("error catched")
+          window.location.reload()
+        }
+                
       }
     },
   });
@@ -50,7 +60,7 @@ const Notes = () => {
             })}
           </ul>
         ) : (
-          <div className="items-center justify-center flex">
+          <div className="items-center justify-center flex h-screen">
             <BoltIcon className="h-10 w-10 animate-pulse duration-75 fill-green-700" />
           </div>
         )}
