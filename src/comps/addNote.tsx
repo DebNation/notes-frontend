@@ -1,17 +1,16 @@
-import { useContext, useState } from "react";
+import { ReactNode, useContext, useState } from "react";
 import { PlusIcon } from "@heroicons/react/16/solid";
 import { addNoteFn } from "../api/api";
 import UserContext from "../contexts/userContext";
 import { useQueryClient } from "@tanstack/react-query";
 import { useMutation } from "@tanstack/react-query";
 
-const AddNote = () => {
+const AddNote = (): ReactNode => {
   const [openModal, setOpenModal] = useState(false);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const user = useContext(UserContext);
 
-  
   const queryClient = useQueryClient();
   const { mutate } = useMutation({
     onSuccess: () => {
@@ -28,7 +27,6 @@ const AddNote = () => {
       }
     },
   });
- 
 
   return (
     <div className="flex justify-center items-center">
@@ -40,7 +38,10 @@ const AddNote = () => {
           <PlusIcon className="w-6 h-6" />
         </button>
         {openModal ? (
-          <div className="fixed inset-0 bg-opacity-30 backdrop-blur-sm duration-100 animate-pop-up" id="modal" >
+          <div
+            className="fixed inset-0 bg-opacity-30 backdrop-blur-sm duration-100 animate-pop-up"
+            id="modal"
+          >
             <div className=" text-xl w-full h-screen flex justify-center p-5">
               <div className="bg-blend-saturation rounded-md bg-neutral-800 md:w-2/4  h-5/6 sm:5/6 md:h-4/6  w-full  md:3/4 p-5 ">
                 <div className="flex justify-center text-xl pt-5">

@@ -1,4 +1,6 @@
-const About = () => {
+import { ReactNode } from "react";
+
+const About = (): ReactNode => {
   return (
     <div className="h-screen bg-lime-200 dark:bg-everforest_bg0 dark:text-white duration-100 pt-10">
 

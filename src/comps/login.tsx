@@ -4,6 +4,11 @@ import { loginResponseType } from "../@types/types";
 import UserContext from "../contexts/userContext";
 import { ArrowPathIcon } from "@heroicons/react/16/solid";
 
+interface errorType {
+  response: {
+    status: number;
+  };
+}
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -19,11 +24,13 @@ function Login() {
       const data: loginResponseType = await loginFn(userData);
       const accessToken = data.data.accessToken;
       const username = data.data.username;
-      console.log(username)
+      console.log(username);
       userContext?.userLogin(accessToken, username);
-    } catch (err) {
+    } catch (err: unknown) {
       console.log(err);
-      if (err?.response?.status === 400) {
+      const knownError = err as errorType;
+
+      if (knownError?.response?.status === 400) {
         console.log("check your credentials again");
       }
     }

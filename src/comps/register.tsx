@@ -7,6 +7,11 @@ import { registerResponseType } from "../@types/types";
 import { useNavigate } from "react-router-dom";
 // import { redirect } from "react-router-dom";
 
+interface errorType{
+  response:{
+    status: number;
+  }
+}
 function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -23,12 +28,14 @@ function Register() {
     setShowProcessing(true);
     try {
       const data: registerResponseType = await RegisterFn(userData);
-      alert("Account is Created, You can Login Now");
-
-      navigate("/");
-    } catch (err) {
+      if (data) {
+        alert("Account is Created, You can Login Now");
+        navigate("/");
+      }
+    } catch (err: unknown) {
       console.log(err);
-      if (err?.response?.status === 409) {
+      const knownError = err as errorType
+      if (knownError?.response?.status === 409) {
         console.log("User already exist");
       }
     }

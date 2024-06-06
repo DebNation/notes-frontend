@@ -10,7 +10,7 @@ function NoteItem(props: NoteType) {
   const [openModal, setOpenModal] = useState(false);
   const [title, setTitle] = useState(props.title);
   const [desc, setDesc] = useState(props.desc);
-  const [id, setId] = useState(props.id);
+  const [id] = useState(props.id);
 
   const [confirmUpdate, setConfirmUpdate] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
@@ -39,7 +39,7 @@ function NoteItem(props: NoteType) {
         const response = await updateNoteFn(user.accessToken, title, desc, id);
         console.log(response);
         // alert("Updated");
-        setOpenModal(!openModal)
+        setOpenModal(!openModal);
         return response;
       } else if (user?.accessToken && confirmDelete) {
         const response = await DeleteNoteFn(user.accessToken, id);

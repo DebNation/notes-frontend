@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import { ReactNode, useContext } from "react";
 import UserContext from "../contexts/userContext";
 import Login from "./login";
 import Notes from "./notes";
 import { BoltIcon } from "@heroicons/react/16/solid";
 
-export const Homepage = () => {
+export const Homepage = (): ReactNode => {
   const userContext = useContext(UserContext);
   return (
     //TODO: fix the light theme pages
