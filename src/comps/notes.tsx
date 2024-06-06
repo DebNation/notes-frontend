@@ -23,10 +23,10 @@ const Notes = () => {
       if (user?.accessToken) {
         try{
 const response = await getAllNotes(user?.accessToken);
-        console.log(isRefetchError);
-        console.log(isError);
-        console.log(isPending)
-        console.log(response)
+        // console.log(isRefetchError);
+        // console.log(isError);
+        // console.log(isPending)
+        // console.log(response)
         return response.data;
 
         }

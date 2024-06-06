@@ -1,5 +1,6 @@
 import { createContext } from "react";
-type userLoginType = (token: string) => void;
+
+type userLoginType = (token: string, username: string) => void;
 
 type userContextType = {
   accessToken: string;

@@ -18,7 +18,9 @@ function Login() {
     try {
       const data: loginResponseType = await loginFn(userData);
       const accessToken = data.data.accessToken;
-      userContext?.userLogin(accessToken);
+      const username = data.data.username;
+      console.log(username)
+      userContext?.userLogin(accessToken, username);
     } catch (err) {
       console.log(err);
       if (err?.response?.status === 400) {
@@ -35,7 +37,7 @@ function Login() {
       ) : (
         <form
           onSubmit={handleSubmit}
-          className="border-2 rounded-md p-5 w-3/4  md:w-1/4 lg:w-1/4 shadow-black border-black dark:border-gray-300 h-2/6"
+          className="border-2 rounded-md p-5 w-3/4  md:w-1/4 lg:w-1/4 shadow-black border-black dark:border-gray-300 h-3/8"
         >
           <div className=" inline-block text-center p-5 w-full">
             <h1 className="text-3xl mb-1">Login</h1>

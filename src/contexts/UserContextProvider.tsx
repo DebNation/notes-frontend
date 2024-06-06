@@ -8,15 +8,18 @@ const UserContextProvider = ({ children }: UserContextProviderType) => {
   const [accessToken, setAccessToken] = useState("");
   const [showLoading, setShowLoading] = useState(false);
 
-  const userLogin = (newToken: string) => {
+  const userLogin = (newToken: string, username: string) => {
     const token = localStorage.getItem("accessToken");
-    if (token) {
+    const UserName = localStorage.getItem("username");
+
+    if (token && UserName) {
       if (token?.length > 1 && token !== null) {
         setAccessToken(token);
       }
     } else {
       // else no token found on localstorage set the newToken
       localStorage.setItem("accessToken", newToken);
+      localStorage.setItem("username", username);
       setAccessToken(newToken);
     }
   };
@@ -29,13 +32,14 @@ const UserContextProvider = ({ children }: UserContextProviderType) => {
         if (token?.length > 1 && token !== null) {
           try {
             // Check the validity of the token
-             await getMeFn(token);
+            await getMeFn(token);
             //TODO use a usecallback to prevent re-render
 
             setAccessToken(token);
           } catch (err) {
             //remove the accessToken if it's expired or being tampered
             localStorage.removeItem("accessToken");
+            localStorage.removeItem("username");
             console.log("unauth");
           }
         }
@@ -45,7 +49,9 @@ const UserContextProvider = ({ children }: UserContextProviderType) => {
   }, [accessToken]);
 
   return (
-    <UserContext.Provider value={{ accessToken, userLogin, showLoading }}>
+    <UserContext.Provider
+      value={{ accessToken, userLogin, showLoading }}
+    >
       {children}
     </UserContext.Provider>
   );

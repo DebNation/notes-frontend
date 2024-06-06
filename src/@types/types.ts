@@ -9,6 +9,13 @@ export interface loginResponseType {
     updatedAt: string;
   };
 }
+export interface registerResponseType {
+  success: boolean;
+  data: {
+    username: string;
+    email: null | string;
+  };
+}
 
 export interface getMeResponseType {
   success: boolean;

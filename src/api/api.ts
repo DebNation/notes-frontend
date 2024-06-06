@@ -9,6 +9,12 @@ export const loginFn = async (userCreds: object) => {
   const response = await notemyApi.post("/login", userCreds);
   return response.data;
 };
+//REGISTER
+export const RegisterFn = async (userCreds: object) => {
+  const response = await notemyApi.post("/register", userCreds);
+  return response.data;
+};
+
 // GET ME(USER DETAILS)
 export const getMeFn = async (token: string) => {
   const response = await notemyApi.get("/me", {
