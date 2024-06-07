@@ -22,6 +22,9 @@ function Login() {
     setShowProcessing(true);
     try {
       const data: loginResponseType = await loginFn(userData);
+      if (data.data == undefined) {
+        alert("Check Your Credentials!");
+      }
       const accessToken = data.data.accessToken;
       const username = data.data.username;
       console.log(username);
@@ -44,7 +47,7 @@ function Login() {
       ) : (
         <form
           onSubmit={handleSubmit}
-          className="border-2 rounded-md p-5 w-3/4  md:w-1/4 lg:w-1/4 shadow-black border-black dark:border-gray-300 h-3/8"
+          className="border-2 dark:border-lime-500 rounded-md p-5 w-3/4  md:w-1/4 lg:w-1/4 shadow-black border-black h-3/8"
         >
           <div className=" inline-block text-center p-5 w-full">
             <h1 className="text-3xl mb-1">Login</h1>
@@ -57,6 +60,7 @@ function Login() {
               className="p-2 mt-1 w-full border-2 hover:border-black dark:border-neutral-600 dark:border-2 dark:bg-neutral-600 "
               placeholder="demouser"
               type="text"
+              required={true}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -67,13 +71,14 @@ function Login() {
               className="p-2 mt-1 w-full border-2 hover:border-black dark:border-neutral-600 dark:border-2 dark:bg-neutral-600 "
               placeholder="*********"
               type="password"
+              required={true}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             <div className="justify-center flex mt-5">
               <button
                 type="submit"
-                className="px-5 py-2 rounded border-2 mt-3 hover:border-black"
+                className="px-5 py-2 rounded border-2 mt-3 duration-500 hover:bg-everforest_bg_yellow"
               >
                 Submit
               </button>

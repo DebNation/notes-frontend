@@ -54,7 +54,7 @@ function NoteItem(props: NoteType) {
   return (
     <>
       <li
-        className="break-inside mb-4 list-group-item  mx-1 md:mx-1 rounded-md bg-green-300 dark:bg-everforest_bg0 border-2 dark:hover:bg-everforest_bg_green border-everforest_green hover:border-everforest_green md:basis-1/4 md:flex-1 hover: cursor-pointer  transition duration-500 ease-in-out"
+        className="break-inside mb-4 list-group-item  mx-1 md:mx-1 rounded-md bg-green-300 hover:bg-green-400 dark:bg-everforest_bg0 border-2 dark:hover:bg-everforest_bg_green border-everforest_green hover:border-everforest_green md:basis-1/4 md:flex-1 hover: cursor-pointer  transition duration-500 ease-in-out"
         onClick={() => setOpenModal(!openModal)}
       >
         <div className="m-2 p-2">
@@ -79,14 +79,14 @@ function NoteItem(props: NoteType) {
             id="modal"
           >
             <div className=" w-full h-screen flex justify-center p-5">
-              <div className="bg-blend-saturation rounded-md bg-neutral-800 md:w-2/4  h-5/6 sm:5/6 md:h-4/6  w-full  md:3/4 p-5  ">
+              <div className="bg-blend-saturation rounded-md bg-lime-500 dark:bg-neutral-800 md:w-2/4  h-5/6 sm:5/6 md:h-4/6  w-full  md:3/4 p-5 dark:text-white shadow-2xl">
                 <div className="flex justify-center text-xl pt-5">
-                  <h1 className="">Update Note</h1>
+                  <h1 className="bold text-2xl">UPDATE NOTE</h1>
                 </div>
                 <div>
                   <label className="block mt-2 text-xl">Title</label>
                   <textarea
-                    className="block mt-2 w-full bg-zinc-700 p-3 rounded-md border-2 border-lime-800"
+                    className="block mt-2 w-full dark:bg-zinc-700 bg-zinc-300 hover:bg-white duration-500 p-3 rounded-md border-2 border-lime-800"
                     rows={2}
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
@@ -95,7 +95,7 @@ function NoteItem(props: NoteType) {
                 <div>
                   <label className="block mt-2 text-xl"> Description</label>
                   <textarea
-                    className="block mt-2 w-full bg-zinc-700 border-2 p-3 rounded-md border-lime-800"
+                    className="block mt-2 w-full dark:bg-zinc-700 bg-zinc-300 hover:bg-white duration-500 order-2 p-3 rounded-md border-lime-800"
                     rows={14}
                     onChange={(e) => setDesc(e.target.value)}
                     value={desc}
@@ -103,14 +103,14 @@ function NoteItem(props: NoteType) {
                 </div>
                 <div className="flex justify-center p-5 md:p-10">
                   <button
-                    className="px-5 py-2 bg-yellow-900 hover:bg-yellow-700 duration-300 rounded-md mt-2 mx-5"
+                    className="px-5 py-2 bg-yellow-900 hover:bg-yellow-700 duration-300 rounded-md mt-2 mx-5 text-white"
                     onClick={() => setOpenModal(false)}
                   >
                     Close
                   </button>
 
                   <button
-                    className="px-5 py-2 bg-green-900 hover:bg-green-700 duration-300 rounded-md mt-2 mx-5"
+                    className="px-5 py-2 bg-green-900 hover:bg-green-700 duration-300 rounded-md mt-2 mx-5 text-white"
                     onClick={() => toggleConfirmUpdate()}
                   >
                     Submit

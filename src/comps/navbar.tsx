@@ -1,4 +1,4 @@
-import { ReactNode, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import ThemeContext from "../contexts/themeContext";
 import {
   MoonIcon,
@@ -13,7 +13,7 @@ import {
 import UserContext from "../contexts/userContext";
 import { Link } from "react-router-dom";
 
-const Navbar = (): ReactNode => {
+const Navbar = () => {
   const themeContext = useContext(ThemeContext);
 
   const user = useContext(UserContext);

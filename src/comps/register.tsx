@@ -43,13 +43,13 @@ function Register() {
   };
 
   return (
-    <div className="h-screen items-center justify-center flex dark:bg-everforest_bg0 dark:text-white duration-100">
+    <div className="h-screen bg-lime-200 items-center justify-center flex dark:bg-everforest_bg0 dark:text-white duration-100">
       {showProcessing ? (
         <ArrowPathIcon className="animate-spin h-6 w-6" />
       ) : (
         <form
           onSubmit={handleSubmit}
-          className="border-2 rounded-md p-5 w-3/4  md:w-1/4 lg:w-1/4 shadow-black border-black dark:border-gray-300 h-2/8"
+          className="border-2 rounded-md p-5 w-3/4  md:w-1/4 lg:w-1/4 shadow-black border-black dark:border-lime-300 h-2/8"
         >
           <div className=" inline-block text-center p-5 w-full">
             <h1 className="text-3xl mb-1">Register</h1>
@@ -57,7 +57,7 @@ function Register() {
           </div>
 
           <div className=" block ">
-            <label className="block">Username</label>
+            <label className="block">Username*</label>
             <input
               className="p-2 mt-1 w-full border-2 hover:border-black dark:border-neutral-600 dark:border-2 dark:bg-neutral-600"
               required={true}
@@ -68,7 +68,7 @@ function Register() {
             />
           </div>
           <div className=" block mt-5 h-2/4 ">
-            <label className="block">Email</label>
+            <label className="block">Email(Optional)</label>
             <input
               className="p-2 mt-1 w-full border-2 hover:border-black dark:border-neutral-600 dark:border-2 dark:bg-neutral-600 "
               placeholder="demouser@email.com"
@@ -79,7 +79,7 @@ function Register() {
           </div>
 
           <div className="block mt-5 h-2/4">
-            <label className="block">Password</label>
+            <label className="block">Password*</label>
             <input
               className="p-2 mt-1 w-full border-2 hover:border-black dark:border-neutral-600 dark:border-2 dark:bg-neutral-600 "
               placeholder="*********"
@@ -91,7 +91,7 @@ function Register() {
             <div className="justify-center flex mt-5">
               <button
                 type="submit"
-                className="px-5 py-2 rounded border-2 mt-3 hover:border-black"
+                className="px-5 py-2 rounded-md border-2 mt-3 bg-amber-600 dark:hover:bg-everforest_bg_yellow dark:bg-everforest_bg0 hover:border-lime-600"
               >
                 Submit
               </button>
