@@ -9,16 +9,20 @@ const notemyApi = axios.create({
   baseURL: "https://notemy-api.dustbin.me/api/auth",
   headers: { "Content-Type": "application/json" },
 });
+
+type loginUserCredsType = { username: string; password: string };
+type registerUserCredsType = { username: string; email: string; password: string };
+
 // LOGIN
 export const loginFn = async (
-  userCreds: object,
+  userCreds: loginUserCredsType,
 ): Promise<loginResponseType> => {
   const response = await notemyApi.post("/login", userCreds);
   return response.data;
 };
 //REGISTER
 export const RegisterFn = async (
-  userCreds: object,
+  userCreds: registerUserCredsType,
 ): Promise<registerResponseType> => {
   const response = await notemyApi.post("/register", userCreds);
   return response.data;
@@ -34,11 +38,8 @@ export const getMeFn = async (token: string): Promise<getMeResponseType> => {
   return response.data;
 };
 
-
 // GET ALL NOTES
-export const getAllNotes = async (
-  token: string,
-)  => {
+export const getAllNotes = async (token: string) => {
   const response = await notemyApi.get("/notes", {
     headers: {
       Authorization: "Bearer " + token,
