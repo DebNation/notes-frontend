@@ -17,13 +17,13 @@ function NoteItem(props: NoteType) {
   const user = useContext(UserContext);
 
   const toggleConfirmUpdate = () => {
-    if (confirm("Are You Sure!") === true) {
+    if (confirm("Are You Sure to Update!") === true) {
       setConfirmUpdate(true);
       mutate();
     }
   };
   const toggleConfirmDelete = () => {
-    if (confirm("Are You Sure!") === true) {
+    if (confirm("Are You Sure to Delete!") === true) {
       setConfirmDelete(true);
       mutate();
     }
@@ -54,7 +54,7 @@ function NoteItem(props: NoteType) {
   return (
     <>
       <li
-        className="break-inside mb-4 list-group-item  mx-1 md:mx-1 rounded-md bg-green-300 hover:bg-green-400 dark:bg-everforest_bg0 border-2 dark:hover:bg-everforest_bg_green border-everforest_green hover:border-everforest_green md:basis-1/4 md:flex-1 hover: cursor-pointer  transition duration-500 ease-in-out"
+        className="break-inside mb-4 list-group-item  mx-1 md:mx-1 rounded-md bg-green-300 hover:bg-green-400 dark:bg-everforest_bg0 border-2 dark:hover:bg-everforest_bg_green border-everforest_green hover:border-everforest_green md:basis-1/4 md:flex-1 hover:cursor-pointer  transition duration-500 ease-in-out"
         onClick={() => setOpenModal(!openModal)}
       >
         <div className="m-2 p-2">
@@ -118,7 +118,7 @@ function NoteItem(props: NoteType) {
                 </div>
                 <div className="flex justify-center mt-5">
                   <TrashIcon
-                    className="h-8 w-8 text-rose-600"
+                    className="h-8 w-8 text-rose-600 hover:text-rose-900 hover:cursor-pointer"
                     onClick={() => toggleConfirmDelete()}
                   />
                 </div>

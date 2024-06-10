@@ -33,7 +33,7 @@ const Navbar = () => {
         <div className="p-2 mr-2 flex">
           {darkMode ? (
             <MoonIcon
-              className="p-2 mt-2 h-12 w-12 transition duration-100 hover:text-gray-500"
+              className="p-2 mt-2 h-12 w-12 transition duration-100 hover:text-gray-500 cursor-pointer"
               onClick={() => {
                 themeContext?.toggleTheme();
                 setDarkMode(!darkMode);
@@ -41,7 +41,7 @@ const Navbar = () => {
             />
           ) : (
             <SunIcon
-              className=" p-2  mt-2 h-12 w-12 transition duration-100 hover:text-white"
+              className=" p-2  mt-2 h-12 w-12 transition duration-100 hover:text-white cursor-pointer"
               onClick={() => {
                 themeContext?.toggleTheme();
                 setDarkMode(!darkMode);
@@ -50,12 +50,12 @@ const Navbar = () => {
           )}
           {showModal ? (
             <XMarkIcon
-              className="h-14 w-14 mt-1 p-2 md:hidden active:rotate-180 active:duration-1000 active:animate-spin"
+              className="h-14 w-14 mt-1 p-2 md:hidden active:rotate-180 active:duration-1000 active:animate-spin cursor-pointer"
               onClick={() => setShowModal(!showModal)}
             />
           ) : (
             <Bars2Icon
-              className="h-14 w-14 mt-1 p-2 md:hidden active:rotate-180 active:duration-1000 active:animate-spin"
+              className="h-14 w-14 mt-1 p-2 md:hidden active:rotate-180 active:duration-1000 active:animate-spin cursor-pointer"
               onClick={() => setShowModal(!showModal)}
             />
           )}
@@ -64,21 +64,21 @@ const Navbar = () => {
               <div>
                 <Link
                   to={"/"}
-                  className="hidden md:px-3 md:py-2 md:mr-5 md:mt-1 md:flex md:hover:bg-green-800 md:duration-100 md:rounded-md"
+                  className="hidden md:px-3 md:py-2 md:mr-5 md:mt-1 md:flex md:hover:bg-green-800 md:duration-100 md:rounded-md cursor-pointer"
                 >
                   <HomeIcon className="h-9 w-9 transition duration-500 mr-2" />
                   <div className="mt-2 font-bold">Home</div>
                 </Link>
               </div>
 
-              <div className="hidden md:px-3 md:py-2 md:mr-5 md:mt-1 md:flex md:hover:bg-green-800 md:duration-100 md:rounded-md">
+              <div className="hidden md:px-3 md:py-2 md:mr-5 md:mt-1 md:flex md:hover:bg-green-800 md:duration-100 md:rounded-md cursor-pointer">
                 <UserIcon className="h-9 w-9 transition duration-500 mr-2" />
                 <div className="mt-2 font-bold">
                   {localStorage.getItem("username")}
                 </div>
               </div>
               <div
-                className="hidden md:px-3 md:py-2 md:mr-5 md:mt-1 md:flex md:hover:bg-green-800 md:duration-100 md:rounded-md"
+                className="hidden md:px-3 md:py-2 md:mr-5 md:mt-1 md:flex md:hover:bg-green-800 md:duration-100 md:rounded-md cursor-pointer"
                 onClick={() => {
                   localStorage.removeItem("accessToken");
                   user?.userLogin(
@@ -90,7 +90,7 @@ const Navbar = () => {
                 <ArrowRightStartOnRectangleIcon className="h-9 w-9 transition duration-500 mr-2" />
                 <div className="mt-2 font-bold">Logout</div>
               </div>
-              <div className="hidden md:px-3 md:py-2 md:mr-5 md:mt-1 md:flex md:hover:bg-green-800 md:duration-100 md:rounded-md ">
+              <div className="hidden md:px-3 md:py-2 md:mr-5 md:mt-1 md:flex md:hover:bg-green-800 md:duration-100 md:rounded-md cursor-pointer">
                 <Link to={"/about"} className="hidden md:flex">
                   <InformationCircleIcon className="h-9 w-9 transition duration-500 mr-2" />
                   <div className="mt-2 font-bold">About</div>
@@ -132,8 +132,18 @@ const Navbar = () => {
           className={`block py-5  md:hidden ${showModal ? "animate-drop-once" : "animate-bounce-up-once"}`}
         >
           {user?.accessToken ? (
-            <ul className="block ">
-              <li className="px-5 py-3  mx-5 rounded-md  bg-lime-800 hover:bg-green-600 flex ">
+            <ul className="block text-white">
+              <li onClick={() => setShowModal(false)}>
+                <Link
+                  to={"/"}
+                  className="px-5 py-3 mt-5  mx-5 rounded-md bg-lime-800 hover:bg-green-600 flex"
+                >
+                  <HomeIcon className="h-6 w-6 mr-2" />
+                  Home
+                </Link>
+              </li>
+
+              <li className="px-5 py-3  mx-5 rounded-md  bg-lime-800 hover:bg-green-600 flex mt-5">
                 <UserIcon className="h-6 w-6 mr-2" />
                 {localStorage.getItem("username")}
               </li>
@@ -145,12 +155,14 @@ const Navbar = () => {
                     localStorage.getItem("accessToken") || "",
                     localStorage.getItem("username") || "",
                   );
+                  setShowModal(false);
                 }}
               >
                 <ArrowRightStartOnRectangleIcon className="h-6 w-6 mr-2" />
                 Logout
               </li>
-              <li>
+
+              <li onClick={() => setShowModal(false)}>
                 <Link
                   to={"/about"}
                   className="px-5 py-3 mt-5  mx-5 rounded-md bg-lime-800 hover:bg-green-600 flex"
@@ -161,8 +173,8 @@ const Navbar = () => {
               </li>
             </ul>
           ) : (
-            <ul className="block ">
-              <li>
+            <ul className="block text-white">
+              <li onClick={() => setShowModal(false)}>
                 <Link
                   to={"/"}
                   className="px-5 py-3  mx-5 rounded-md  bg-lime-800 hover:bg-green-600 flex "
@@ -171,16 +183,16 @@ const Navbar = () => {
                   Login
                 </Link>
               </li>
-              <li>
+              <li onClick={() => setShowModal(false)}>
                 <Link
                   to={"/register"}
-                  className="px-5 py-3 mt-5  mx-5 rounded-md bg-lime-800 hover:bg-everforest_orage flex"
+                  className="px-5 py-3 mt-5  mx-5 rounded-md bg-lime-800 hover:bg-green-600 flex"
                 >
                   <ArrowRightStartOnRectangleIcon className="h-6 w-6 mr-2" />
                   Register
                 </Link>
               </li>
-              <li>
+              <li onClick={() => setShowModal(false)}>
                 <Link
                   to={"/about"}
                   className="px-5 py-3 mt-5  mx-5 rounded-md bg-lime-800 hover:bg-green-600 flex"

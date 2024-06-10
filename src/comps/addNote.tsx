@@ -32,7 +32,7 @@ const AddNote = (): ReactNode => {
     <div className="flex justify-center items-center">
       <div className="">
         <button
-          className="px-8 py-3 m-5 dark:bg-yellow-600 bg-everforest_orage text-sm rounded-md dark:hover:px-10 duration-300 "
+          className="px-8 py-3 m-5 dark:bg-yellow-600 bg-everforest_orage text-sm rounded-md hover:px-10 duration-300 "
           onClick={() => setOpenModal(!openModal)}
         >
           <PlusIcon className="w-6 h-6" />
