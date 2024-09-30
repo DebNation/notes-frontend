@@ -12,16 +12,15 @@ function NoteItem(props: NoteType) {
   const [desc, setDesc] = useState(props.desc);
   const [id] = useState(props.id);
 
-  const [confirmUpdate, setConfirmUpdate] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const user = useContext(UserContext);
 
-  const toggleConfirmUpdate = () => {
-    if (confirm("Are You Sure to Update!") === true) {
-      setConfirmUpdate(true);
-      mutate();
-    }
-  };
+  // const toggleConfirmUpdate = () => {
+  //   if (confirm("Are You Sure to Update!") === true) {
+  //     setConfirmUpdate(true);
+  //     mutate();
+  //   }
+  // };
   const toggleConfirmDelete = () => {
     if (confirm("Are You Sure to Delete!") === true) {
       setConfirmDelete(true);
@@ -35,17 +34,21 @@ function NoteItem(props: NoteType) {
       queryClient.invalidateQueries({ queryKey: ["notes"] });
     },
     mutationFn: async () => {
-      if (user?.accessToken && confirmUpdate) {
+      if (user?.accessToken) {
         const response = await updateNoteFn(user.accessToken, title, desc, id);
         console.log(response);
         // alert("Updated");
         setOpenModal(!openModal);
-        return response;
-      } else if (user?.accessToken && confirmDelete) {
-        const response = await DeleteNoteFn(user.accessToken, id);
-        console.log(response);
-        setOpenModal(!openModal);
-        alert("Deleted");
+        if (confirmDelete) {
+          if (user) {
+            const response = await DeleteNoteFn(user?.accessToken, id);
+            console.log(response);
+            setOpenModal(!openModal);
+            alert("Deleted");
+            return response;
+          }
+        }
+
         return response;
       }
     },
@@ -111,7 +114,9 @@ function NoteItem(props: NoteType) {
 
                   <button
                     className="px-5 py-2 bg-green-900 hover:bg-green-700 duration-300 rounded-md mt-2 mx-5 text-white"
-                    onClick={() => toggleConfirmUpdate()}
+                    onClick={() => {
+                      mutate();
+                    }}
                   >
                     Submit
                   </button>
