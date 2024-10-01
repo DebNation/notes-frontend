@@ -5,6 +5,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useMutation } from "@tanstack/react-query";
 import { DeleteNoteFn, updateNoteFn } from "../api/api";
 import { TrashIcon } from "@heroicons/react/16/solid";
+import { toast } from "sonner";
 
 function NoteItem(props: NoteType) {
   const [openModal, setOpenModal] = useState(false);
@@ -38,6 +39,7 @@ function NoteItem(props: NoteType) {
         const response = await updateNoteFn(user.accessToken, title, desc, id);
         console.log(response);
         // alert("Updated");
+        toast.success("Note has been updated!")
         setOpenModal(!openModal);
         if (confirmDelete) {
           if (user) {

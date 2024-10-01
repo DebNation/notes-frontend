@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
-    "start" : "npm run preview --host --omit=dev",
+    "start": "npm run preview --host --omit=dev",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -16,7 +16,8 @@
     "axios": "^1.7.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.23.1",
+    "sonner": "^1.5.0"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.35.6",
