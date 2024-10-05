@@ -4,6 +4,7 @@ import { addNoteFn } from "../api/api";
 import UserContext from "../contexts/userContext";
 import { useQueryClient } from "@tanstack/react-query";
 import { useMutation } from "@tanstack/react-query";
+import { toast } from "sonner";
 
 const AddNote = (): ReactNode => {
   const [openModal, setOpenModal] = useState(false);
@@ -19,7 +20,7 @@ const AddNote = (): ReactNode => {
     mutationFn: async () => {
       if (user?.accessToken) {
         const response = await addNoteFn(user.accessToken, title, desc);
-        console.log(response);
+        toast.success("Note added")
         setOpenModal(!openModal);
         setTitle("");
         setDesc("");

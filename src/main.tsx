@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <UserContextProvider>
         <QueryClientProvider client={queryClient}>
           <App />
-          <Toaster richColors theme="dark" position="top-right" closeButton/>
+          <Toaster richColors theme="dark" position="top-right" />
         </QueryClientProvider>
       </UserContextProvider>
     </ThemeContextProvider>

@@ -35,21 +35,21 @@ function NoteItem(props: NoteType) {
       queryClient.invalidateQueries({ queryKey: ["notes"] });
     },
     mutationFn: async () => {
+      if (confirmDelete) {
+        if (user) {
+          const response = await DeleteNoteFn(user?.accessToken, id);
+          console.log(response);
+          setOpenModal(!openModal);
+          toast.error("Note has been Deleted!");
+          return response;
+        }
+      }
       if (user?.accessToken) {
         const response = await updateNoteFn(user.accessToken, title, desc, id);
         console.log(response);
         // alert("Updated");
-        toast.success("Note has been updated!")
+        toast.success("Note has been updated!");
         setOpenModal(!openModal);
-        if (confirmDelete) {
-          if (user) {
-            const response = await DeleteNoteFn(user?.accessToken, id);
-            console.log(response);
-            setOpenModal(!openModal);
-            alert("Deleted");
-            return response;
-          }
-        }
 
         return response;
       }
